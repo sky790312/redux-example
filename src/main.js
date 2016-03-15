@@ -21,6 +21,9 @@ function clickAction(count = 1, delay = 0) {
 
 //========= middleware part 分離至ex: middleware.js =============//
 
+// var inc = (x) => x+1;
+// equal to
+// var inc = function (x) { return x + 1; };
 const myDelayMiddleware = store => next => action => {
     if (action.delay) {
         return setTimeout(() => {
@@ -40,6 +43,7 @@ function myClickReducer (state = initialState, action) {
     switch (action.type) {
         case CLICKEVENT:
             state.clickCount += action.count;
+            // 展開運算子(Spread Operator)與其餘參數(Rest parameters)
             return { ...state };
         default:
             return state;
